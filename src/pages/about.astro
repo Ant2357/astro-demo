@@ -1,5 +1,17 @@
 ---
+const pageTitle = "私について"
 
+const identity = {
+  name: "Ant2357",
+  country: "日本",
+  occupation: "エンジニア",
+  hobbies: ["プログラミング", "野球", "女子サッカー"],
+};
+
+const skills = ["HTML5/CSS3", "JavaScript", "React", "Astro"];
+
+const happy = true;
+const finished = true;
 ---
 
 <html lang="en">
@@ -8,18 +20,35 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>{pageTitle}</title>
   </head>
   <body>
     <a href="/">Home</a>
     <a href="/about/">About</a>
     <a href="/blog/">Blog</a>
 
-    <h1>私について</h1>
+    <h1>{pageTitle}</h1>
     <h2>... そして私の新しいAstroサイトについて！</h2>
 
     <p>Astroのチュートリアルを進めています。</p>
 
     <p>このサイトはデモサイトです。</p>
+
+    <p>以下は私に関する情報です。</p>
+    <ul>
+      <li>私の名前は{identity.name} です。 </li>
+      <li>{identity.country}に住んでおり、{identity.occupation}として働いています。</li>
+      {identity.hobbies.length >= 2 && 
+        <li>私の二つの趣味は{identity.hobbies[0]}と{identity.hobbies[1]}です。</li>
+      }
+    </ul>
+
+    <p>私のスキルは以下です。</p>
+    <ul>
+      {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+
+    {happy && <p>私は元気です。</p>}
+    {finished && <p>私はこのチュートリアルを完了しました。</p>}
   </body>
 </html>
