@@ -1,4 +1,7 @@
 ---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
 import "../styles/global.css";
 
 const pageTitle = "私について"
@@ -38,9 +41,7 @@ const fontWeight = "bold";
     </style>
   </head>
   <body>
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
+    <Header />
 
     <h1>{pageTitle}</h1>
     <h2>... そして私の新しいAstroサイトについて！</h2>
@@ -65,5 +66,11 @@ const fontWeight = "bold";
 
     {happy && <p>私は元気です。</p>}
     {finished && <p>私はこのチュートリアルを完了しました。</p>}
+
+    <Footer />
+
+    <script>
+      import "../scripts/menu.js";
+    </script>
   </body>
 </html>
