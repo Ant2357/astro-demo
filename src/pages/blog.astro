@@ -1,8 +1,5 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "私の Astro 学習ブログ"
 ---
@@ -16,20 +13,13 @@ const pageTitle = "私の Astro 学習ブログ"
     <title>{pageTitle}</title>
   </head>
   <body>
-    <Header />
-
-    <h1>{pageTitle}</h1>
-    <p>ここはブログページです。</p>
-    <ul>
-      <li><a href="/posts/post-1/">記事1</a></li>
-      <li><a href="/posts/post-2/">記事2</a></li>
-      <li><a href="/posts/post-3/">記事3</a></li>
-    </ul>
-
-    <Footer />
-
-    <script>
-      import "../scripts/menu.js";
-    </script>
+    <BaseLayout pageTitle={pageTitle}>
+      <p>ここはブログページです。</p>
+      <ul>
+        <li><a href="/posts/post-1/">記事1</a></li>
+        <li><a href="/posts/post-2/">記事2</a></li>
+        <li><a href="/posts/post-3/">記事3</a></li>
+      </ul>
+    </BaseLayout>
   </body>
 </html>

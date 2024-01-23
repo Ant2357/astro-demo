@@ -1,8 +1,5 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "私について"
 
@@ -41,36 +38,29 @@ const fontWeight = "bold";
     </style>
   </head>
   <body>
-    <Header />
+    <BaseLayout pageTitle={pageTitle}>
+      <h2>... そして私の新しいAstroサイトについて！</h2>
 
-    <h1>{pageTitle}</h1>
-    <h2>... そして私の新しいAstroサイトについて！</h2>
+      <p>Astroのチュートリアルを進めています。</p>
 
-    <p>Astroのチュートリアルを進めています。</p>
+      <p>このサイトはデモサイトです。</p>
 
-    <p>このサイトはデモサイトです。</p>
+      <p>以下は私に関する情報です。</p>
+      <ul>
+        <li>私の名前は {identity.name} です。 </li>
+        <li>{identity.country}に住んでおり、{identity.occupation}として働いています。</li>
+        {identity.hobbies.length >= 2 && 
+          <li>私の二つの趣味は{identity.hobbies[0]}と{identity.hobbies[1]}です。</li>
+        }
+      </ul>
 
-    <p>以下は私に関する情報です。</p>
-    <ul>
-      <li>私の名前は {identity.name} です。 </li>
-      <li>{identity.country}に住んでおり、{identity.occupation}として働いています。</li>
-      {identity.hobbies.length >= 2 && 
-        <li>私の二つの趣味は{identity.hobbies[0]}と{identity.hobbies[1]}です。</li>
-      }
-    </ul>
+      <p>私のスキルは以下です。</p>
+      <ul>
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
+      </ul>
 
-    <p>私のスキルは以下です。</p>
-    <ul>
-      {skills.map((skill) => <li class="skill">{skill}</li>)}
-    </ul>
-
-    {happy && <p>私は元気です。</p>}
-    {finished && <p>私はこのチュートリアルを完了しました。</p>}
-
-    <Footer />
-
-    <script>
-      import "../scripts/menu.js";
-    </script>
+      {happy && <p>私は元気です。</p>}
+      {finished && <p>私はこのチュートリアルを完了しました。</p>}
+    </BaseLayout>
   </body>
 </html>
